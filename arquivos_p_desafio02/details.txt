@@ -1,0 +1,37 @@
+Desafio: Desenvolva um classificador que determine se uma pessoa morreu ou não abordo do Titanic.
+
+=================================================================================================
+Etapa 1: Analise a base de dados.
+	- Analise as features disponiveis no dataset.
+		- Analise a frequencia dos dados categoricos.
+			- Grafico de barra.
+		- Analise a distribuição de features numéricas continuas.
+			- Histograma.
+			- Box Plot.
+	- Busque por valores faltantes.
+	- Busque por relações entre features.
+		- Grafico de disperção.
+		- Matrix de correlação.
+		- Grafico de linha.
+
+*Tenha sempre em mente em focar em analises que crie insights sobre a coluna target.
+
+Etapa 2: Selecione as features que justificam Y.
+	- Elabore um story-telling para as analises extraidas.
+	- Escolha as melhores features para prever Y.
+		- Justifique suas escolhas.
+
+Etapa 3: Treine o classificador.
+	- modelos:
+		- Regressão Logistica.
+		- Classificador baseado em arvore de decisão.
+-------------------------------------------------------------------------------------------------
+Etapa 4 (opcional): Crie uma aplicação para que qualquer usuário interaja com o modelo.
+	- Deve receber todos os valores necessários para prever Y por CLI.
+	- Desafio extra (opcional): Faça a aplicação utilizando uma biblioteca de interface gráfica.
+		- TKinter.
+		- Streamlit.
+		- PySide6.
+		- Qt6.
+=================================================================================================
+
