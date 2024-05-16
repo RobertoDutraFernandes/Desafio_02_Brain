@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
 
-def vericar_input(input_string):
+def verificar_input(input_string):
     if len(input_string) != 0:
         if input_string[0].isdigit():
             b= input_string.replace(',' , '.')
@@ -9,15 +9,47 @@ def vericar_input(input_string):
             return c
     return False
 
+def verificar_classe(input_string):
+    try:
+        inteiro = int(input_string)
+        if inteiro == 1 or inteiro == 2 or inteiro == 3:
+            return True
+    except ValueError:
+        pass
+    return False
+
+def verificar_sexo(input_string):
+    if input_string.lower() == 'Mulher' or input_string.lower() == 'mulher' or input_string.lower() == 'MULHER':
+        return 0
+    elif input_string.lower() == 'Homem' or input_string.lower() == 'homem' or input_string.lower() == 'HOMEM':
+        return 1
+    return False
+
+def verificar_intervalo(fare, pclass):
+    try:
+        valor = float(fare)
+        if pclass == 1 and 21 <= valor <= 70:
+            return True
+        elif pclass == 2 and 11 <= valor <= 20:
+            return True
+        elif pclass == 3 and 0 <= valor <= 10:
+            return True
+    except ValueError:
+        pass
+    return False 
+
 def Embarque(input_string):
     lista_embarque = []
     if input_string== 'S':
         lista_embarque = [1,0,0]
+        return lista_embarque
     elif input_string == 'C':
         lista_embarque = [0,1,0]
-    else:
+        return lista_embarque
+    elif input_string == 'Q':
         lista_embarque = [0,0,1]
-    return lista_embarque
+        return lista_embarque
+    return False
 
 def pedir_parametros():
     # importa biblioteca, carregar modelo e definir variaveis
@@ -34,31 +66,55 @@ def pedir_parametros():
     for features in variaveis:
         if features!='C' and features!='Q':
             while True:
-                if features!='S' and features!='Sexo':
+                if features!='S' and features!='Sexo' and features != 'Pclass' and features != 'Fare':
                     resposta_for = input(f"Insira o valor para a coluna {features}: ")
-                    if vericar_input(resposta_for) == True and features!='S':
+                    if verificar_input(resposta_for) == True and features!='S':
                         lista_resposta.append(resposta_for)
                         break
                     else:
-                        print('entrada invalida, por favor digite um numero float/int')
+                        print('Entrada invalida, por favor digite um numero float/int')
+
+                elif features == 'Pclass':
+                    resposta_for = input(f"Insira o valor para a coluna {features}: ")
+                    if verificar_classe(resposta_for) and verificar_input(resposta_for):
+                        lista_resposta.append(resposta_for)
+                        classe = int(resposta_for)
+                        break
+                    else:
+                        print('Entrada invalida, por favor digite o numero de sua classe (1 ,2 ou 3)')
+
+                elif features == 'Fare' and classe == 1 or classe == 2 or classe == 3:
+                    resposta_for = input(f"Insira o valor para a coluna {features}: ")
+                    if verificar_intervalo(resposta_for, classe):
+                        lista_resposta.append(resposta_for)
+                        break
+                    else:
+                        print(f'Entrada inválida, por favor digite um valor condizente para a classe {classe}')
+
+
                 elif features == 'Sexo':
-                    resposta_for = input(f"Insira o valor para a coluna {features}(Mulher=0 Homem=1): ")
-                    if vericar_input(resposta_for) == True and features!='S':
-                        lista_resposta.append(resposta_for)
+                    resposta_for = input(f"Insira o valor para a coluna {features}(Mulher / Homem): ")
+                    sexo = verificar_sexo(resposta_for)
+                    if sexo is not False:
+                        lista_resposta.append(sexo)
                         break
                     else:
-                        print('entrada invalida, por favor digite um numero float/int')
+                        print('Entrada invalida, por favor digite seu sexo corretamente, Homem / Mulher')
+
                 else:
                     resposta_for = input(f"Qual o local de embarque?\nS, C ou Q: ")
-                    if features=='S':    #adicionar um condição dupla onde sera vericado se o input é S,C ou Q com a função a ser criada 'verifica_embarque()'
-                        lista_embarque = Embarque(resposta_for)
+                    lista_embarque = Embarque(resposta_for)
+                    if features=='S' and lista_embarque is not False:
                         lista_resposta+=lista_embarque
                         break
                     else:
-                        print('entrada invalida, por favor digite um numero float/int')
+                        print('Entrada invalida, por favor digite um local vádido de embarque')
 
     df_variaveis.loc[len(df_variaveis)] = lista_resposta
     previsao_model = IA.predict(df_variaveis)
     dic = { 0:'morto', 1:'vivo'}
     resultado = dic[previsao_model.item()]
     print(f"Previsão: {resultado}")
+
+
+pedir_parametros()
