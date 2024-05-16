@@ -75,7 +75,7 @@ def pedir_parametros():
                         print('Entrada invalida, por favor digite um numero float/int')
 
                 elif features == 'Pclass':
-                    resposta_for = input(f"Insira o valor para a coluna {features}: ")
+                    resposta_for = input(f"Insira qual a classe de sua passagem: ")
                     if verificar_classe(resposta_for) and verificar_input(resposta_for):
                         lista_resposta.append(resposta_for)
                         classe = int(resposta_for)
@@ -83,8 +83,8 @@ def pedir_parametros():
                     else:
                         print('Entrada invalida, por favor digite o numero de sua classe (1 ,2 ou 3)')
 
-                elif features == 'Fare' and classe == 1 or classe == 2 or classe == 3:
-                    resposta_for = input(f"Insira o valor para a coluna {features}: ")
+                elif features == 'Fare' and (classe == 1 or classe == 2 or classe == 3):
+                    resposta_for = input(f"Insira o valor pago em sua passagem: ")
                     if verificar_intervalo(resposta_for, classe):
                         lista_resposta.append(resposta_for)
                         break
@@ -93,7 +93,7 @@ def pedir_parametros():
 
 
                 elif features == 'Sexo':
-                    resposta_for = input(f"Insira o valor para a coluna {features}(Mulher / Homem): ")
+                    resposta_for = input(f"Insira o seu sexo (Mulher / Homem): ")
                     sexo = verificar_sexo(resposta_for)
                     if sexo is not False:
                         lista_resposta.append(sexo)
@@ -115,6 +115,3 @@ def pedir_parametros():
     dic = { 0:'morto', 1:'vivo'}
     resultado = dic[previsao_model.item()]
     print(f"Previsão: {resultado}")
-
-
-pedir_parametros()
