@@ -14,10 +14,10 @@ Está foi uma abordagem padrão adotada para este desafio. Nesta foi realizado:
 - Treinamento e validação da IA.
 
 ### Outliers dos dados completos:
-![alt text](desafio02\imagens\outliers.png)
+![alt text](/desafio02/imagens/outliers.png)
 
 ### Boxplot dos outliers tratados:
-![alt text](desafio02\imagens\outliers_tratados.png)
+![alt text](/desafio02/imagens/outliers_tratados.png)
 
 ### Resultados obtidos:
 - Desempenho aproximado sem tratamento de outliers: 88%
@@ -28,10 +28,10 @@ Está foi uma abordagem padrão adotada para este desafio. Nesta foi realizado:
 Cosiste na seleção das features que serão usadas para o treinamento do modelo, esta é feita com base na análise de gráfica e dos dados obtidos atráves da etapa anterior em conjunto com o julgamento do desenvolvedor. Diversos gráficos foram feitos nesta etapa, porém foi mantido apenas aqueles que foram julgados utéis para seleção das features.
 
 ### Gráfico de histograma de todas as features selecionadas:
-![alt text](desafio02\imagens\histograma_geral.png)
+![alt text](/desafio02/imagens/histograma_geral.png)
 
 ### Matriz de correlação:
-![alt text](desafio02\imagens\matriz_correlacao.png)
+![alt text](/desafio02/imagens/matriz_correlacao.png)
 
 
 
@@ -40,12 +40,12 @@ Cosiste na seleção das features que serão usadas para o treinamento do modelo
   - Pclass: Lógicamente a classe da passagem é muito relevante, devido aos privilégios concedidos para pessoas de classes mais altas, lógica esta que pode ser comprovada através de análise gráfica, onde apesar da maior parte dos tripulantes serem de 3ª classe, podemos observar que a maioria dos sobreviventes foram de 1ª;
 
     #### Quantidade de sobreviventes por classe:
-    ![alt text](desafio02\imagens\sobreviventes_por_classe.png)
+    ![alt text](/desafio02/imagens/sobreviventes_por_classe.png)
   
   - Age: A idade é um fator decisivo na hora de priorizar o salvamento de vidas, esta lógica pode ser reforçada através da análise dos gráficos gerados;
 
     #### Quantidade de sobreviventes de acordo com a faixa de idade:
-    ![alt text](desafio02\imagens\sobreviventes_por_idade.png)
+    ![alt text](/desafio02/imagens/sobreviventes_por_idade.png)
 
   - SipSp: Feature selecionada através de análise gráfica;
 
@@ -56,10 +56,10 @@ Cosiste na seleção das features que serão usadas para o treinamento do modelo
   - Sex:  Mulheres normalmente tem prioridade na hora de salvamentos, fato este que poder ser reforçado atráves dos gráficos gerados no notebook, onde apresenta uma alta taxa de sobrevivência das mesmas;
 
     #### Quantidade de tripulantes:
-    ![alt text](desafio02\imagens\pessoas_por_sexo.png)
+    ![alt text](/desafio02/imagens/pessoas_por_sexo.png)
 
     #### Sobreviventes por sexo:
-    ![alt text](desafio02\imagens\sobreviventes_por_sexo.png)
+    ![alt text](/desafio02/imagens/sobreviventes_por_sexo.png)
 
   - Embarked: Feature selecionada através de análise gráfica;
 
@@ -89,4 +89,4 @@ Realizamos um breve tratamento de dados que consiste no one hot da features cate
 Com todos os dados preenchidos é realizado o treinamento do modelo final utilizando Regressão Logística, modelo estes que apesar de ter atingido o mesmo desempenho final que o desenvolvido na primeira abordagem (99,52%), possui um resultado melhor quando em teste sem a remoção dos outliers dos dados (este qual remove 3/4 dos dados totais), sendo aproximadamente 92%. 
 
 ### Matriz de confusão para validação da IA:
-![alt text](desafio02\imagens\matriz_confusao.png)
+![alt text](/desafio02/imagens/matriz_confusao.png)
